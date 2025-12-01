@@ -1,0 +1,160 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SWAPI Starwars Schema",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/people": {
+      "get": {
+        "operationId": "getCharacterList",
+        "summary": "Get Character list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Character object list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Character"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/people/{id}": {
+      "get": {
+        "operationId": "getCharacterById",
+        "summary": "Get Character by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Character object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Character": {
+        "type": "object",
+        "properties": {
+          "birth_year": {
+            "type": "string"
+          },
+          "eye_color": {
+            "type": "string"
+          },
+          "films": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "gender": {
+            "type": "string"
+          },
+          "hair_color": {
+            "type": "string"
+          },
+          "height": {
+            "type": "string"
+          },
+          "homeworld": {
+            "type": "string",
+            "format": "uri"
+          },
+          "mass": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "skin_color": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "edited": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "species": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "starships": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "vehicles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "required": [
+          "birth_year",
+          "eye_color",
+          "hair_color ",
+          "films",
+          "gender",
+          "height",
+          "homeworld",
+          "mass",
+          "name",
+          "skin_color",
+          "created",
+          "edited",
+          "species",
+          "starships",
+          "url",
+          "vehicles"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://swapi.py4e.com",
+      "description": "Trial"
+    }
+  ]
+}
