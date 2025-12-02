@@ -32,6 +32,7 @@ export type GetCharacterListData = {
   path?: never;
   query?: {
     page?: number;
+    search?: string;
   };
   url: '/api/people';
 };
