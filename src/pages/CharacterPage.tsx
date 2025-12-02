@@ -1,15 +1,21 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { getCharacterListOptions } from '@/api/swapi';
+import { getCharacterByIdOptions } from '@/api/swapi';
 
 export const CharactersPage = () => {
-  const { data } = useQuery(getCharacterListOptions());
+  const { data } = useQuery({
+    ...getCharacterByIdOptions({
+      path: {
+        id: '1',
+      },
+    }),
+  });
 
   console.log(data);
 
   return (
     <div>
-      <h1>Characters</h1>
+      <h1>Character</h1>
       <Link to="/">Back to Home</Link>
     </div>
   );
