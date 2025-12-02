@@ -1,10 +1,12 @@
 import { getCharacterList, getCharacterListQueryKey } from '@/api/swapi';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { usePagination } from './usePagination';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
+import { useDebounceValue } from 'usehooks-ts';
 
 export const useCharacterList = (searchQuery: string = '') => {
   const { currentPage, handlePageChange, itemsPerPage } = usePagination();
+  const [debouncedSearchQuery] = useDebounceValue(searchQuery, 500)
 
   const getCharacterListWithPage = useCallback((page: number, search: string = '') => {
     return getCharacterList({
@@ -16,8 +18,8 @@ export const useCharacterList = (searchQuery: string = '') => {
   }, []);
 
   const { data, isPending, isError, error } = useQuery({
-    queryFn: () => getCharacterListWithPage(currentPage, searchQuery),
-    queryKey: [getCharacterListQueryKey(), currentPage, searchQuery],
+    queryFn: () => getCharacterListWithPage(currentPage, debouncedSearchQuery),
+    queryKey: [getCharacterListQueryKey(), currentPage, debouncedSearchQuery],
     placeholderData: keepPreviousData,
   });
 
