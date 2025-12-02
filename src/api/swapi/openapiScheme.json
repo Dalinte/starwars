@@ -9,7 +9,16 @@
       "get": {
         "operationId": "getCharacterList",
         "summary": "Get Character list",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Paginated list of characters",
@@ -38,6 +47,16 @@
                       }
                     }
                   }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundProblem"
                 }
               }
             }
@@ -166,6 +185,15 @@
           "url",
           "vehicles"
         ]
+      },
+      "NotFoundProblem": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "string"
+          }
+        },
+        "required": ["detail"]
       }
     }
   },

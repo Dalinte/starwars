@@ -23,12 +23,27 @@ export type Character = {
   vehicles: Array<string>;
 };
 
+export type NotFoundProblem = {
+  detail: string;
+};
+
 export type GetCharacterListData = {
   body?: never;
   path?: never;
-  query?: never;
+  query?: {
+    page?: number;
+  };
   url: '/api/people';
 };
+
+export type GetCharacterListErrors = {
+  /**
+   * Not Found
+   */
+  404: NotFoundProblem;
+};
+
+export type GetCharacterListError = GetCharacterListErrors[keyof GetCharacterListErrors];
 
 export type GetCharacterListResponses = {
   /**

@@ -91,3 +91,13 @@ export const CharacterSchema = {
     'vehicles',
   ],
 } as const;
+
+export const NotFoundProblemSchema = {
+  type: 'object',
+  properties: {
+    detail: {
+      type: 'string',
+    },
+  },
+  required: ['detail'],
+} as const;

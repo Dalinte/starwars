@@ -10,6 +10,7 @@ import type {
   GetCharacterByIdData,
   GetCharacterByIdResponses,
   GetCharacterListData,
+  GetCharacterListErrors,
   GetCharacterListResponses,
 } from './types.gen';
 
@@ -36,7 +37,7 @@ export type Options<
 export const getCharacterList = <ThrowOnError extends boolean = false>(
   options?: Options<GetCharacterListData, ThrowOnError>
 ) =>
-  (options?.client ?? client).get<GetCharacterListResponses, unknown, ThrowOnError>({
+  (options?.client ?? client).get<GetCharacterListResponses, GetCharacterListErrors, ThrowOnError>({
     responseTransformer: getCharacterListResponseTransformer,
     url: '/api/people',
     ...options,
