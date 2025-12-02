@@ -1,7 +1,7 @@
 import { AppLayout } from '@/layouts/AppLayout';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { CharactersPage } from '@/pages/CharactersPage';
-import { Box } from '@mui/material';
+import { CharacterPage } from '@/pages/CharacterPage';
 import { type RouteObject } from 'react-router';
 
 export const routes: RouteObject[] = [
@@ -13,7 +13,7 @@ export const routes: RouteObject[] = [
       { path: '/characters', Component: CharactersPage },
       {
         path: '/characters/:id',
-        Component: Box,
+        Component: CharacterPage,
       },
       {
         path: '*',

@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { getCharacterList, getCharacterListQueryKey } from '@/api/swapi';
-import { Box, Pagination } from '@mui/material';
+import { Box, Pagination, Typography } from '@mui/material';
 import { type ChangeEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const CharactersPage = () => {
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
   const getCharacterListWithPage = (page: number) => {
     return getCharacterList({
@@ -40,7 +41,19 @@ export const CharactersPage = () => {
         ) : (
           <div>
             {data?.data?.results?.map(project => (
-              <p key={project.name}>{project.name}</p>
+              <Typography 
+                key={project.name} 
+                onClick={() => navigate(`/characters/${project.url.split('/').filter(Boolean).pop()}`)}
+                sx={{ 
+                  cursor: 'pointer', 
+                  '&:hover': { 
+                    textDecoration: 'underline',
+                    color: 'primary.main'
+                  } 
+                }}
+              >
+                {project.name}
+              </Typography>
             ))}
           </div>
         )}
