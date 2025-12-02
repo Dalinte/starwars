@@ -12,13 +12,31 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "Character object list",
+            "description": "Paginated list of characters",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Character"
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Character"
+                      }
+                    }
                   }
                 }
               }

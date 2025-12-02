@@ -11,7 +11,9 @@ const characterSchemaResponseTransformer = (data: any) => {
 export const getCharacterListResponseTransformer = async (
   data: any
 ): Promise<GetCharacterListResponse> => {
-  data = data.map((item: any) => characterSchemaResponseTransformer(item));
+  if (data.results) {
+    data.results = data.results.map((item: any) => characterSchemaResponseTransformer(item));
+  }
   return data;
 };
 

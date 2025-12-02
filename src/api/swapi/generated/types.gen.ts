@@ -32,9 +32,14 @@ export type GetCharacterListData = {
 
 export type GetCharacterListResponses = {
   /**
-   * Character object list
+   * Paginated list of characters
    */
-  200: Array<Character>;
+  200: {
+    count?: number;
+    next?: string | null;
+    previous?: string | null;
+    results?: Array<Character>;
+  };
 };
 
 export type GetCharacterListResponse = GetCharacterListResponses[keyof GetCharacterListResponses];
