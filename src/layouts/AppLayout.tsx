@@ -1,12 +1,14 @@
 import { Outlet } from 'react-router-dom';
-import { Box } from '@mui/material';
+import { Container } from '@mui/material';
 
 export const AppLayout = () => {
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Box component="main" sx={{ flex: 1 }}>
-        <Outlet />
-      </Box>
-    </Box>
+    <Container
+      maxWidth="lg"
+      component="main"
+      sx={{ display: 'flex', flexDirection: 'column', my: 16, gap: 4 }}
+    >
+      <Outlet />
+    </Container>
   );
 };
