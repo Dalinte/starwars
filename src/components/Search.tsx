@@ -5,7 +5,7 @@ import {
   type SxProps,
 } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import { type ChangeEvent } from 'react';
+import { type ChangeEvent, type FC } from 'react';
 
 interface SearchProps extends Omit<OutlinedInputProps, 'onChange' | 'value'> {
   value: string;
@@ -15,7 +15,7 @@ interface SearchProps extends Omit<OutlinedInputProps, 'onChange' | 'value'> {
   sx?: SxProps;
 }
 
-export const Search = ({ value, onChange, placeholder = 'Search…', ...props }: SearchProps) => {
+export const Search: FC<SearchProps> = ({ value, onChange, placeholder = 'Search…', ...props }) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
   };

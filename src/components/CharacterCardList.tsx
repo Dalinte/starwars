@@ -2,12 +2,13 @@ import Grid from '@mui/material/Grid';
 import { CharacterCard } from '@/components/CharacterCard';
 import type { Character } from '@/api/swapi';
 import { useNavigate } from 'react-router-dom';
+import type { FC } from 'react';
 
 interface CharacterCardListProps {
   characterList: Character[];
 }
 
-export const CharacterCardList = ({ characterList }: CharacterCardListProps) => {
+export const CharacterCardList: FC<CharacterCardListProps> = ({ characterList }) => {
   const navigate = useNavigate();
 
   return (
