@@ -1,11 +1,11 @@
 import Grid from '@mui/material/Grid';
 import { CharacterCard } from '@/components/CharacterCard';
-import type { Character } from '@/api/swapi';
 import { useNavigate } from 'react-router-dom';
 import type { FC } from 'react';
+import type { CharacterListWithId } from '@/types';
 
 interface CharacterCardListProps {
-  characterList: Character[];
+  characterList: CharacterListWithId;
 }
 
 export const CharacterCardList: FC<CharacterCardListProps> = ({ characterList }) => {
@@ -17,9 +17,7 @@ export const CharacterCardList: FC<CharacterCardListProps> = ({ characterList })
         <Grid size={{ xs: 12, md: 4 }}>
           <CharacterCard
             character={character}
-            onClick={() =>
-              navigate(`/characters/${character.url.split('/').filter(Boolean).pop()}`)
-            }
+            onClick={() => navigate(`/characters/${character.id}`)}
           />
         </Grid>
       ))}

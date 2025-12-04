@@ -4,28 +4,20 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import EditIcon from '@mui/icons-material/Edit';
 import { CharacterEditForm } from '@/components/CharacterEditForm';
 import { CharacterCard } from '@/components/CharacterCard';
-import { useSideDrawer } from '@/hooks/useSideDrawer';
-import { getCharacterByIdOptions } from '@/api/swapi';
-import { useQuery } from '@tanstack/react-query';
+import { useSideDrawer, useCharacter } from '@/hooks';
 
 export const CharacterPage = () => {
   const navigate = useNavigate();
   const { id: characterId } = useParams<{ id: string }>();
-
-  const { data } = useQuery({
-    ...getCharacterByIdOptions({
-      path: {
-        id: String(characterId),
-      },
-    }),
-  });
+  const { character } = useCharacter(Number(characterId));
   const { openDrawerWithContent, closeDrawer } = useSideDrawer();
+  console.log(character);
 
   const handleEditClick = () => {
-    if (data) {
+    if (character) {
       openDrawerWithContent(
         <CharacterEditForm
-          character={data}
+          character={character}
           onSave={() => {
             closeDrawer();
           }}
@@ -77,7 +69,7 @@ export const CharacterPage = () => {
             >
               Character Details
             </Typography>
-            {data && (
+            {character && (
               <Button
                 variant="outlined"
                 onClick={handleEditClick}
@@ -102,9 +94,9 @@ export const CharacterPage = () => {
       </AppBar>
 
       <Container maxWidth="sm">
-        {data && (
+        {character && (
           <Box>
-            <CharacterCard character={data} onClick={handleEditClick} />
+            <CharacterCard character={character} onClick={handleEditClick} />
           </Box>
         )}
       </Container>
