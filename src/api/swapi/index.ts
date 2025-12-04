@@ -1,2 +1,2 @@
-export * from './generated'
-export * from './generated/@tanstack/react-query.gen.ts'
+export * from './generated';
+export * from './generated/@tanstack/react-query.gen.ts';

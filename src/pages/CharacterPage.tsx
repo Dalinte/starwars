@@ -37,13 +37,13 @@ export const CharacterPage = () => {
 
   return (
     <Box>
-      <AppBar 
+      <AppBar
         position="static"
         color="transparent"
-        elevation={0} 
-        sx={{ 
+        elevation={0}
+        sx={{
           mb: { xs: 2, sm: 3 },
-          py: { xs: 1, sm: 0 }
+          py: { xs: 1, sm: 0 },
         }}
       >
         <Container maxWidth="lg">
@@ -53,26 +53,26 @@ export const CharacterPage = () => {
               color="inherit"
               onClick={() => navigate('/')}
               aria-label="back to home"
-              sx={{ 
+              sx={{
                 mr: 2,
                 color: 'text.primary',
                 '&:hover': {
                   backgroundColor: 'action.hover',
-                }
+                },
               }}
               size="large"
             >
               <ArrowBackIcon />
             </IconButton>
-            <Typography 
-              variant="h6" 
+            <Typography
+              variant="h6"
               component="h1"
-              sx={{ 
+              sx={{
                 flexGrow: 1,
                 fontSize: { xs: '1.1rem', sm: '1.25rem' },
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
-                textOverflow: 'ellipsis'
+                textOverflow: 'ellipsis',
               }}
             >
               Character Details
@@ -88,8 +88,8 @@ export const CharacterPage = () => {
                   minWidth: 'auto',
                   px: { xs: 1.5, sm: 2 },
                   '& .MuiButton-startIcon': {
-                    mr: { xs: 0.5, sm: 1 }
-                  }
+                    mr: { xs: 0.5, sm: 1 },
+                  },
                 }}
               >
                 <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
@@ -100,7 +100,7 @@ export const CharacterPage = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      
+
       <Container maxWidth="sm">
         {data && (
           <Box>

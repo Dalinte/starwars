@@ -6,7 +6,7 @@ import { useDebounceValue } from 'usehooks-ts';
 
 export const useCharacterList = (searchQuery: string = '') => {
   const { currentPage, handlePageChange, itemsPerPage } = usePagination();
-  const [debouncedSearchQuery] = useDebounceValue(searchQuery, 500)
+  const [debouncedSearchQuery] = useDebounceValue(searchQuery, 500);
 
   const getCharacterListWithPage = useCallback((page: number, search: string = '') => {
     return getCharacterList({
@@ -24,8 +24,8 @@ export const useCharacterList = (searchQuery: string = '') => {
   });
 
   const maxPage = useMemo(() => {
-    return data?.data?.count ? Math.ceil(Number(data.data.count) / itemsPerPage) : 1
-  }, [data?.data?.count, itemsPerPage])
+    return data?.data?.count ? Math.ceil(Number(data.data.count) / itemsPerPage) : 1;
+  }, [data?.data?.count, itemsPerPage]);
 
   return {
     currentPage,

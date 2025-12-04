@@ -35,7 +35,7 @@ export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEdit
       homeworld: character.homeworld || '',
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: values => {
       onSave({
         ...character,
         ...values,
@@ -64,7 +64,7 @@ export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEdit
       <Typography variant="h5" gutterBottom component="h2" sx={{ mb: 3 }}>
         Edit Character
       </Typography>
-      
+
       <form onSubmit={formik.handleSubmit}>
         <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' } }}>
           {renderTextField('name', 'Name')}
@@ -79,19 +79,10 @@ export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEdit
         </Box>
 
         <Stack direction="row" spacing={2} justifyContent="flex-end" sx={{ mt: 4 }}>
-          <Button 
-            variant="outlined" 
-            onClick={onCancel}
-            sx={{ minWidth: 100 }}
-          >
+          <Button variant="outlined" onClick={onCancel} sx={{ minWidth: 100 }}>
             Cancel
           </Button>
-          <Button 
-            type="submit" 
-            variant="contained" 
-            color="primary"
-            sx={{ minWidth: 100 }}
-          >
+          <Button type="submit" variant="contained" color="primary" sx={{ minWidth: 100 }}>
             Save
           </Button>
         </Stack>
