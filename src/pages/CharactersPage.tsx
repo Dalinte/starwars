@@ -1,13 +1,13 @@
 import { Box, FormControl, Pagination, Typography } from '@mui/material';
-import { useCharacterList } from '@/hooks/useCharacterList.ts';
 import { useState } from 'react';
 import { Search } from '@/components/Search.tsx';
 import { CharacterCardList } from '@/components/CharacterCardList.tsx';
+import { useMergedCharacterList } from '@/hooks/useMergedCharacterList.ts';
 
 export const CharactersPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const { maxPage, characterList, handlePageChange } = useCharacterList(searchQuery);
+  const { maxPage, characterList, handlePageChange } = useMergedCharacterList(searchQuery);
 
   return (
     <Box>

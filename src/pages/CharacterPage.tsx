@@ -4,31 +4,23 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import EditIcon from '@mui/icons-material/Edit';
 import { CharacterEditForm } from '@/components/CharacterEditForm';
 import { CharacterCard } from '@/components/CharacterCard';
-import { useSideDrawer, useCharacter } from '@/hooks';
+import { useSideDrawer } from '@/hooks';
 import { useLocalCharacter } from '@/hooks/useLocalCharacter.ts';
-import { useMemo } from 'react';
+import { useMergedCharacter } from '@/hooks/useMergedCharacter.ts';
 
 export const CharacterPage = () => {
   const navigate = useNavigate();
   const { id: characterId } = useParams<{ id: string }>();
-  const { character } = useCharacter(Number(characterId));
-  const { getMergedCharacter } = useLocalCharacter();
   const { openDrawerWithContent, closeDrawer } = useSideDrawer();
   const { saveCharacter } = useLocalCharacter();
-
-  const mergedCharacter = useMemo(() => {
-    if (!character) return undefined
-
-      return getMergedCharacter(character);
-  }, [character, getMergedCharacter])
-
+  const {character} = useMergedCharacter(Number(characterId))
 
   const handleEditClick = () => {
-    if (mergedCharacter) {
+    if (character) {
 
       openDrawerWithContent(
         <CharacterEditForm
-          character={mergedCharacter}
+          character={character}
           onSave={data => {
             saveCharacter(data);
             closeDrawer();
@@ -106,9 +98,9 @@ export const CharacterPage = () => {
       </AppBar>
 
       <Container maxWidth="sm">
-        {mergedCharacter && (
+        {character && (
           <Box>
-            <CharacterCard character={mergedCharacter} onClick={handleEditClick} />
+            <CharacterCard character={character} onClick={handleEditClick} />
           </Box>
         )}
       </Container>
