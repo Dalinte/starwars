@@ -1,11 +1,11 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Box, Button, TextField, Typography, Stack } from '@mui/material';
-import { type Character } from '@/api/swapi';
+import type { CharacterWithId } from '@/types';
 
 interface CharacterEditFormProps {
-  character: Character;
-  onSave: (updatedCharacter: Character) => void;
+  character: CharacterWithId;
+  onSave: (updatedCharacter: CharacterWithId) => void;
   onCancel: () => void;
 }
 

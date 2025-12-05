@@ -5,20 +5,32 @@ import EditIcon from '@mui/icons-material/Edit';
 import { CharacterEditForm } from '@/components/CharacterEditForm';
 import { CharacterCard } from '@/components/CharacterCard';
 import { useSideDrawer, useCharacter } from '@/hooks';
+import { useLocalCharacter } from '@/hooks/useLocalCharacter.ts';
+import { useMemo } from 'react';
 
 export const CharacterPage = () => {
   const navigate = useNavigate();
   const { id: characterId } = useParams<{ id: string }>();
   const { character } = useCharacter(Number(characterId));
+  const { getMergedCharacter } = useLocalCharacter();
   const { openDrawerWithContent, closeDrawer } = useSideDrawer();
-  console.log(character);
+  const { saveCharacter } = useLocalCharacter();
+
+  const mergedCharacter = useMemo(() => {
+    if (!character) return undefined
+
+      return getMergedCharacter(character);
+  }, [character, getMergedCharacter])
+
 
   const handleEditClick = () => {
-    if (character) {
+    if (mergedCharacter) {
+
       openDrawerWithContent(
         <CharacterEditForm
-          character={character}
-          onSave={() => {
+          character={mergedCharacter}
+          onSave={data => {
+            saveCharacter(data);
             closeDrawer();
           }}
           onCancel={closeDrawer}
@@ -94,9 +106,9 @@ export const CharacterPage = () => {
       </AppBar>
 
       <Container maxWidth="sm">
-        {character && (
+        {mergedCharacter && (
           <Box>
-            <CharacterCard character={character} onClick={handleEditClick} />
+            <CharacterCard character={mergedCharacter} onClick={handleEditClick} />
           </Box>
         )}
       </Container>
