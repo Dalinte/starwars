@@ -5,7 +5,7 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
   '& .MuiDrawer-paper': {
     width: '30%',
     minWidth: '300px',
-    maxWidth: '600px',
+    maxWidth: '900px',
     padding: theme.spacing(3),
     boxSizing: 'border-box',
   },

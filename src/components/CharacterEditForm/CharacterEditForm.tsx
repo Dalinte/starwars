@@ -1,7 +1,24 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { Box, Button, TextField, Typography, Stack } from '@mui/material';
-import type { CharacterWithId } from '@/types';
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  Stack,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Select,
+  FormHelperText,
+} from '@mui/material';
+import type { CharacterWithId, SelectOptions } from '@/types';
+import {
+  eyeColorOptions,
+  genderOptions,
+  hairColorOptions,
+  skinColorOptions,
+} from '@/consts/selectOptions.ts';
 
 interface CharacterEditFormProps {
   character: CharacterWithId;
@@ -59,8 +76,40 @@ export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEdit
     />
   );
 
+  const renderSelectField = (
+    name: keyof typeof formik.values,
+    label: string,
+    options: SelectOptions
+  ) => (
+    <FormControl
+      fullWidth
+      margin="normal"
+      error={formik.touched[name] && Boolean(formik.errors[name])}
+    >
+      <InputLabel id={`${name}-label`}>{label}</InputLabel>
+      <Select
+        labelId={`${name}-label`}
+        id={name}
+        name={name}
+        value={formik.values[name]}
+        label={label}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+      >
+        {options.map(option => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </Select>
+      {formik.touched[name] && formik.errors[name] && (
+        <FormHelperText>{formik.errors[name]}</FormHelperText>
+      )}
+    </FormControl>
+  );
+
   return (
-    <Box sx={{ mt: 2, maxWidth: 600, mx: 'auto', p: 3, boxShadow: 1, borderRadius: 1 }}>
+    <Box sx={{ mt: 2, maxWidth: 800, mx: 'auto', p: 3 }}>
       <Typography variant="h5" gutterBottom component="h2" sx={{ mb: 3 }}>
         Edit Character
       </Typography>
@@ -70,11 +119,11 @@ export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEdit
           {renderTextField('name', 'Name')}
           {renderTextField('height', 'Height (cm)')}
           {renderTextField('mass', 'Mass (kg)')}
-          {renderTextField('hair_color', 'Hair Color')}
-          {renderTextField('skin_color', 'Skin Color')}
-          {renderTextField('eye_color', 'Eye Color')}
+          {renderSelectField('hair_color', 'Hair Color', hairColorOptions)}
+          {renderSelectField('skin_color', 'Skin Color', skinColorOptions)}
+          {renderSelectField('eye_color', 'Eye Color', eyeColorOptions)}
           {renderTextField('birth_year', 'Birth Year')}
-          {renderTextField('gender', 'Gender')}
+          {renderSelectField('gender', 'Gender', genderOptions)}
           {renderTextField('homeworld', 'Homeworld URL')}
         </Box>
 
