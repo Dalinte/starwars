@@ -12,7 +12,7 @@ export const defaultColorOptions: SelectOptions = [
   { value: 'pink', label: 'Pink' },
   { value: 'gold', label: 'Gold' },
   { value: 'white', label: 'White' },
-  { value: 'unknown', label: 'Unknown' },
+  { value: 'n/a', label: 'N/A' },
 ];
 
 export const eyeColorOptions = defaultColorOptions;
@@ -20,7 +20,9 @@ export const hairColorOptions = defaultColorOptions;
 export const skinColorOptions = [
   { value: 'light', label: 'Light' },
   { value: 'dark', label: 'Dark' },
-  { value: 'unknown', label: 'Unknown' },
+  { value: 'gold', label: 'Gold' },
+  { value: 'Fair', label: 'Fair' },
+  { value: 'n/a', label: 'N/A' },
 ];
 
 export const genderOptions: SelectOptions = [

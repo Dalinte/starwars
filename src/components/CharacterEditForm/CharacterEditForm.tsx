@@ -6,11 +6,6 @@ import {
   TextField,
   Typography,
   Stack,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Select,
-  FormHelperText,
   Paper,
   List,
   ListItem,
@@ -22,7 +17,7 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 
-import type { CharacterWithId, SelectOptions } from '@/types';
+import type { CharacterWithId } from '@/types';
 import {
   eyeColorOptions,
   genderOptions,
@@ -32,6 +27,7 @@ import {
 import { useState } from 'react';
 import { TextFieldWithFormik } from '../TextFieldWithFormik/TextFieldWithFormik';
 import type { Character } from '@/api/swapi';
+import { SelectWithFormik } from '@/components/SelectWithFormik/SelectWithFormik.tsx';
 
 interface CharacterEditFormProps {
   character: CharacterWithId;
@@ -83,39 +79,6 @@ export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEdit
     },
   });
 
-
-  const renderSelectField = (
-    name: keyof typeof formik.values,
-    label: string,
-    options: SelectOptions
-  ) => (
-    <FormControl
-      fullWidth
-      margin="normal"
-      error={formik.touched[name] && Boolean(formik.errors[name])}
-    >
-      <InputLabel id={`${name}-label`}>{label}</InputLabel>
-      <Select
-        labelId={`${name}-label`}
-        id={name}
-        name={name}
-        value={formik.values[name]}
-        label={label}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      >
-        {options.map(option => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </Select>
-      {formik.touched[name] && formik.errors[name] && (
-        <FormHelperText>{formik.errors[name]}</FormHelperText>
-      )}
-    </FormControl>
-  );
-
   const handleAddFilm = () => {
     if (newFilmUrl.trim()) {
       formik.setFieldValue('films', [...formik.values.films, newFilmUrl.trim()]);
@@ -146,11 +109,31 @@ export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEdit
           <TextFieldWithFormik<Character> name="name" label="Name" formik={formik} />
           <TextFieldWithFormik<Character> name="height" label="Height (cm)" formik={formik} />
           <TextFieldWithFormik<Character> name="mass" label="Mass (kg)" formik={formik} />
-          {renderSelectField('hair_color', 'Hair Color', hairColorOptions)}
-          {renderSelectField('skin_color', 'Skin Color', skinColorOptions)}
-          {renderSelectField('eye_color', 'Eye Color', eyeColorOptions)}
+          <SelectWithFormik<Character>
+            name="hair_color"
+            label="Hair Color"
+            options={hairColorOptions}
+            formik={formik}
+          />
+          <SelectWithFormik<Character>
+            name="skin_color"
+            label="Skin Color"
+            options={skinColorOptions}
+            formik={formik}
+          />
+          <SelectWithFormik<Character>
+            name="eye_color"
+            label="Eye Color"
+            options={eyeColorOptions}
+            formik={formik}
+          />
+          <SelectWithFormik<Character>
+            name="gender"
+            label="Gender"
+            options={genderOptions}
+            formik={formik}
+          />
           <TextFieldWithFormik<Character> name="birth_year" label="Birth Year" formik={formik} />
-          {renderSelectField('gender', 'Gender', genderOptions)}
           <TextFieldWithFormik<Character> name="homeworld" label="Homeworld URL" formik={formik} />
         </Box>
 
