@@ -37,17 +37,19 @@ export const useLocalCharacter = () => {
     (characters: CharacterListWithId): CharacterWithId[] => {
       if (!localCharacters.length) return characters;
 
-      const localCharactersMap = new Map<number, CharacterWithId>();
-
+      const characterMap = new Map<number, CharacterWithId>();
+      
       characters.forEach(character => {
-        localCharactersMap.set(character.id, character);
+        characterMap.set(character.id, character);
       });
-
+      
       localCharacters.forEach(localChar => {
-        localCharactersMap.set(localChar.id, localChar);
+        if (characterMap.has(localChar.id)) {
+          characterMap.set(localChar.id, localChar);
+        }
       });
-
-      return Array.from(localCharactersMap.values());
+      
+      return Array.from(characterMap.values()).sort((a, b) => a.id - b.id);
     },
     [localCharacters]
   );

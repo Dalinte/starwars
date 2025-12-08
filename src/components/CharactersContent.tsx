@@ -1,21 +1,14 @@
 import { Box } from '@mui/material';
 import { CharacterCardList } from '@/components/CharacterCardList.tsx';
-import type { CharacterListWithId } from '@/types';
 import { CharactersListSkeleton } from '@/components/CharactersListSkeleton.tsx';
+import { useMergedCharacterList } from '@/hooks/useMergedCharacterList.ts';
 
-interface ICharactersContentProps {
-  characterList: CharacterListWithId;
-  isLoading: boolean;
-}
+export const CharactersContent = () => {
+  const { characterList, isLoading } = useMergedCharacterList();
 
-export const CharactersContent = ({ characterList, isLoading }: ICharactersContentProps) => {
   return (
     <Box>
-      {isLoading ? (
-        <CharactersListSkeleton />
-      ) : (
-        <CharacterCardList characterList={characterList} />
-      )}
+      {isLoading ? <CharactersListSkeleton /> : <CharacterCardList characterList={characterList} />}
     </Box>
   );
 };

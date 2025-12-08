@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 
 export const CharactersListSkeleton = () => {
   return (
-    <Grid container spacing={2} rowSpacing={5} columns={12}>
+    <Grid container spacing={1} columns={12}>
       {[...Array(10)].map((_, index) => (
         <Grid key={index} size={{ xs: 12, md: 4 }} height={455}>
           <Skeleton

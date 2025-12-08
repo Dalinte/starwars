@@ -5,10 +5,12 @@ import { useCallback, useMemo } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import { getCharacterWithId } from '@/utils';
 import { useSearchStore } from '@/store/searchStore.ts';
+import { useCharactersPaginationStore } from '@/store/useCharactersPaginationStore.ts';
 
 export const useCharacterList = () => {
   const { searchQuery } = useSearchStore();
-  const { currentPage, handlePageChange, itemsPerPage } = usePagination();
+  const { currentPage, setCurrentPage } = useCharactersPaginationStore();
+  const { handlePageChange, itemsPerPage } = usePagination({ currentPage, setCurrentPage });
   const [debouncedSearchQuery] = useDebounceValue(searchQuery, 500);
 
   const getCharacterListWithPage = useCallback((page: number, search: string = '') => {
@@ -20,13 +22,11 @@ export const useCharacterList = () => {
     });
   }, []);
 
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isError, error, isFetching } = useQuery({
     queryFn: () => getCharacterListWithPage(currentPage, debouncedSearchQuery),
     queryKey: [getCharacterListQueryKey(), currentPage, debouncedSearchQuery],
-    // placeholderData: keepPreviousData,
+    placeholderData: keepPreviousData,
   });
-
-  console.log('isLoading', isLoading);
 
   const maxPage = useMemo(() => {
     return data?.data?.count ? Math.ceil(Number(data.data.count) / itemsPerPage) : 1;
@@ -43,8 +43,9 @@ export const useCharacterList = () => {
     maxPage: maxPage,
     characterList: characterListWithIds,
     handlePageChange,
-    isLoading: isLoading,
+    isLoading: isFetching,
     isError,
     error,
+    haveCharacters: Boolean(characterListWithIds.length),
   };
 };
