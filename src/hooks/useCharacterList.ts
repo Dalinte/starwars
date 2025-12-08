@@ -4,8 +4,10 @@ import { usePagination } from './usePagination';
 import { useCallback, useMemo } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import { getCharacterWithId } from '@/utils';
+import { useSearchStore } from '@/store/searchStore.ts';
 
-export const useCharacterList = (searchQuery: string = '') => {
+export const useCharacterList = () => {
+  const { searchQuery } = useSearchStore();
   const { currentPage, handlePageChange, itemsPerPage } = usePagination();
   const [debouncedSearchQuery] = useDebounceValue(searchQuery, 500);
 

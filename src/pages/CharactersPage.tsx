@@ -1,13 +1,10 @@
-import { Box, FormControl, Pagination, Typography } from '@mui/material';
-import { useState } from 'react';
-import { Search } from '@/components/Search.tsx';
+import { Box, Pagination, Typography } from '@mui/material';
 import { CharacterCardList } from '@/components/CharacterCardList.tsx';
 import { useMergedCharacterList } from '@/hooks/useMergedCharacterList.ts';
+import { CharactersHeader } from '@/components/CharactersHeader.tsx';
 
 export const CharactersPage = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const { maxPage, characterList, handlePageChange } = useMergedCharacterList(searchQuery);
+  const { maxPage, characterList, handlePageChange } = useMergedCharacterList();
 
   return (
     <Box>
@@ -18,25 +15,7 @@ export const CharactersPage = () => {
               Characters of Starwars
             </Typography>
           </div>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column-reverse', md: 'row' },
-              width: '100%',
-              justifyContent: 'flex-end',
-              alignItems: { xs: 'start', md: 'center' },
-              overflow: 'auto',
-            }}
-          >
-            <FormControl
-              variant="outlined"
-              sx={{
-                width: { xs: '100%', md: '250px', overflow: 'hidden' },
-              }}
-            >
-              <Search value={searchQuery} onChange={setSearchQuery} />
-            </FormControl>
-          </Box>
+          <CharactersHeader />
           <CharacterCardList characterList={characterList} />
         </Box>
       </Box>
