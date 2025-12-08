@@ -8,16 +8,12 @@ export const CharactersPage = () => {
 
   return (
     <Box>
-      <Box>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-          <div>
-            <Typography variant="h1" gutterBottom>
-              Characters of Starwars
-            </Typography>
-          </div>
-          <CharactersHeader />
-          <CharacterCardList characterList={characterList} />
-        </Box>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+        <Typography variant="h1" gutterBottom>
+          Characters of Starwars
+        </Typography>
+        <CharactersHeader />
+        <CharacterCardList characterList={characterList} />
       </Box>
 
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
