@@ -200,7 +200,7 @@ export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEdit
           <Button variant="outlined" onClick={onCancel} sx={{ minWidth: 100 }}>
             Cancel
           </Button>
-          <Button type="submit" variant="contained" color="primary" sx={{ minWidth: 100 }}>
+          <Button disabled={!formik.isValid} type="submit" variant="contained" color="primary" sx={{ minWidth: 100 }}>
             Save
           </Button>
         </Stack>
