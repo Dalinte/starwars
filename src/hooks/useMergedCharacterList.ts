@@ -8,10 +8,10 @@ export const useMergedCharacterList = () => {
 
   const mergedCharacterList = useMemo(() => {
     return getMergedCharacters(hookData.characterList);
-  }, [hookData.characterList, getMergedCharacters])
+  }, [hookData.characterList, getMergedCharacters]);
 
   return {
     ...hookData,
-    mergedCharacterList
-  }
-}
+    mergedCharacterList,
+  };
+};

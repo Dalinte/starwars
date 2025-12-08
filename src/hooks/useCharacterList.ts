@@ -5,7 +5,7 @@ import { useCallback, useMemo } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import { getCharacterWithId } from '@/utils';
 import { useSearchStore } from '@/store/searchStore.ts';
-import { useCharactersPaginationStore } from '@/store/useCharactersPaginationStore.ts';
+import { useCharactersPaginationStore } from '@/store/useCharactersPaginationStore';
 
 export const useCharacterList = () => {
   const { searchQuery } = useSearchStore();
@@ -46,6 +46,5 @@ export const useCharacterList = () => {
     isLoading: isFetching,
     isError,
     error,
-    haveCharacters: Boolean(characterListWithIds.length),
   };
 };
