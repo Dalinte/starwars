@@ -1,16 +1,26 @@
-import { Box, Skeleton } from '@mui/material';
+import { Skeleton } from '@mui/material';
+import Grid from '@mui/material/Grid';
 
 export const CharactersListSkeleton = () => {
   return (
-    <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, gap: 3 }}>
+    <Grid container spacing={2} rowSpacing={5} columns={12}>
       {[...Array(10)].map((_, index) => (
-        <Box key={index} sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-          <Skeleton variant="rectangular" width="100%" height={200} animation="wave" />
-          <Skeleton variant="text" width="80%" height={32} animation="wave" />
-          <Skeleton variant="text" width="60%" height={48} animation="wave" />
-          <Skeleton variant="text" width="70%" height={24} animation="wave" />
-        </Box>
+        <Grid key={index} size={{ xs: 12, md: 4 }} height={455}>
+          <Skeleton
+            variant="rectangular"
+            height={210}
+            animation="wave"
+            sx={{
+              height: { sm: 'auto', md: '50%' },
+              aspectRatio: { sm: '', lg: '16 / 9' },
+            }}
+          />
+          <Skeleton variant="text" width="30%" height={32} animation="wave" />
+          <Skeleton variant="text" width="100%" height={150} animation="wave" />
+          <Skeleton variant="text" width="100%" height={32} animation="wave" />
+          <Skeleton variant="text" width="100%" height={32} animation="wave" />
+        </Grid>
       ))}
-    </Box>
+    </Grid>
   );
 };

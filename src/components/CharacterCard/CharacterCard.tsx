@@ -1,24 +1,21 @@
 import { CardMedia, Typography } from '@mui/material';
-import type { Character } from '@/api/swapi';
 import { StyledCard, StyledCardContent, StyledTypography } from './style.ts';
 import Box from '@mui/material/Box';
 import { generateCharacterDescription } from '@/utils/characterDescription.ts';
-import { useId } from 'react';
+import type { CharacterWithId } from '@/types';
 
 interface CharacterCardProps {
-  character: Character;
+  character: CharacterWithId;
   onClick: () => void;
 }
 
 export const CharacterCard = ({ character, onClick }: CharacterCardProps) => {
-  const id = useId();
-
   return (
     <StyledCard variant="outlined" sx={{ height: '100%', textAlign: 'start' }} onClick={onClick}>
       <CardMedia
         component="img"
         alt="green iguana"
-        image={`https://picsum.photos/800/450?random=${id}`}
+        image={`https://picsum.photos/800/450?random=${character.id}`}
         sx={{
           height: { sm: 'auto', md: '50%' },
           aspectRatio: { sm: '16 / 9', md: '' },

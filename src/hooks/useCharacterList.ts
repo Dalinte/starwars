@@ -20,11 +20,13 @@ export const useCharacterList = () => {
     });
   }, []);
 
-  const { data, isPending, isError, error } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryFn: () => getCharacterListWithPage(currentPage, debouncedSearchQuery),
     queryKey: [getCharacterListQueryKey(), currentPage, debouncedSearchQuery],
-    placeholderData: keepPreviousData,
+    // placeholderData: keepPreviousData,
   });
+
+  console.log('isLoading', isLoading);
 
   const maxPage = useMemo(() => {
     return data?.data?.count ? Math.ceil(Number(data.data.count) / itemsPerPage) : 1;
@@ -41,7 +43,7 @@ export const useCharacterList = () => {
     maxPage: maxPage,
     characterList: characterListWithIds,
     handlePageChange,
-    isLoading: isPending,
+    isLoading: isLoading,
     isError,
     error,
   };

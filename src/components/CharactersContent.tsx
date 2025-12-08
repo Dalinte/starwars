@@ -11,7 +11,7 @@ interface ICharactersContentProps {
 export const CharactersContent = ({ characterList, isLoading }: ICharactersContentProps) => {
   return (
     <Box>
-      {!isLoading ? (
+      {isLoading ? (
         <CharactersListSkeleton />
       ) : (
         <CharacterCardList characterList={characterList} />
