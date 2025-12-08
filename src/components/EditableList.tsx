@@ -14,7 +14,7 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 
-interface EditableListProps {
+export interface EditableListProps {
   items: string[];
   onChange: (items: string[]) => void;
   label: string;
@@ -28,7 +28,6 @@ export const EditableList = ({
   onChange,
   label,
   itemLabel = 'Item',
-  addButtonText = 'Add',
   validation,
 }: EditableListProps) => {
   const [newItem, setNewItem] = useState('');
@@ -125,14 +124,16 @@ export const EditableList = ({
             onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), handleAddItem())}
             error={Boolean(errors[items.length])}
             helperText={errors[items.length]}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton edge="end" onClick={handleAddItem} disabled={!newItem.trim()}>
-                    <AddIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton edge="end" onClick={handleAddItem} disabled={!newItem.trim()}>
+                      <AddIcon />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              },
             }}
           />
         </Box>
