@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { CharactersHeader } from '@/components/CharactersHeader.tsx';
 import { CharactersContent } from '@/components/CharactersContent.tsx';
-import { CharacterBottom } from '@/components/CharacterBottom.tsx';
+import { CharactersBottom } from '@/components/CharactersBottom.tsx';
 import { useCharactersPaginationStore } from '@/store/useCharactersPaginationStore';
 import { useEffect } from 'react';
 import { scrollToTop } from '@/utils/scrollToTop.ts';
@@ -21,7 +21,7 @@ export const CharactersPage = () => {
         </Typography>
         <CharactersHeader />
         <CharactersContent />
-        <CharacterBottom />
+        <CharactersBottom />
       </Box>
     </Box>
   );
