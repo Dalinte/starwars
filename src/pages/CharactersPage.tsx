@@ -1,10 +1,12 @@
 import { Box, Pagination, Typography } from '@mui/material';
-import { CharacterCardList } from '@/components/CharacterCardList.tsx';
 import { useMergedCharacterList } from '@/hooks/useMergedCharacterList.ts';
 import { CharactersHeader } from '@/components/CharactersHeader.tsx';
+import { useCharacterList } from '@/hooks/useCharacterList.ts';
+import { CharactersContent } from '@/components/CharactersContent.tsx';
 
 export const CharactersPage = () => {
   const { maxPage, characterList, handlePageChange } = useMergedCharacterList();
+  const { isLoading } = useCharacterList();
 
   return (
     <Box>
@@ -13,7 +15,7 @@ export const CharactersPage = () => {
           Characters of Starwars
         </Typography>
         <CharactersHeader />
-        <CharacterCardList characterList={characterList} />
+        <CharactersContent characterList={characterList} isLoading={isLoading}/>
       </Box>
 
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
