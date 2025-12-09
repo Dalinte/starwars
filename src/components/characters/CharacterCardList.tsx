@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import { CharacterCard } from '@/components/CharacterCard';
+import { CharacterCard } from '@/components/character/CharacterCard';
 import { useNavigate } from 'react-router-dom';
 import type { FC } from 'react';
 import type { CharacterListWithId } from '@/types';
