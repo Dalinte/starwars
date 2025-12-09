@@ -1,4 +1,4 @@
-import { useSideDrawerStore } from '@/stores';
+import { useSideDrawerStore } from '@/store';
 import { SideDrawer } from './SideDrawer';
 
 export const SideDrawerManager = () => {
