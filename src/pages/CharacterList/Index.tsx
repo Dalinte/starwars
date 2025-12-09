@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
-import { CharactersPageHeader } from '@/components/characters/CharactersPageHeader';
-import { CharactersPageContent } from '@/components/characters/CharactersPageContent';
-import { CharactersPageBottom } from '@/components/characters/CharactersPageBottom';
+import { CharactersPageHeader } from './entities/CharactersPageHeader';
+import { CharactersPageContent } from './entities/CharactersPageContent';
+import { CharactersPageBottom } from './entities/CharactersPageBottom';
 import { useCharactersPaginationStore } from '@/store';
 import { useEffect } from 'react';
 import { scrollToTop } from '@/utils/scrollToTop.ts';

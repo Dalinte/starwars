@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { CharacterCardList } from '@/components/characters/CharacterCardList';
 import { CharactersListSkeleton } from '@/components/characters/CharactersListSkeleton';
 import { useMergedCharacterList } from '@/hooks';
-import { NoResultsFound } from '@/components/ui/NoResultsFound';
+import { NoResultsFound } from '@/components/NoResultsFound.tsx';
 import { useSearchStore } from '@/store';
 import { useMemo } from 'react';
 

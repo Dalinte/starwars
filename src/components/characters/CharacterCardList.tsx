@@ -14,7 +14,7 @@ export const CharacterCardList: FC<CharacterCardListProps> = ({ characterList })
   return (
     <Grid container spacing={2} columns={12}>
       {characterList.map(character => (
-        <Grid size={{ xs: 12, md: 4 }}>
+        <Grid key={character.id} size={{ xs: 12, md: 4 }}>
           <CharacterCard
             character={character}
             onClick={() => navigate(`/characters/${character.id}`)}

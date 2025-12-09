@@ -1,5 +1,5 @@
 import { Box, FormControl } from '@mui/material';
-import { Search } from '@/components/ui/Search';
+import { Search } from '@/components/Search.tsx';
 import { useSearchStore } from '@/store';
 
 export const CharactersPageHeader = () => {

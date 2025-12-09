@@ -1,7 +1,7 @@
 import { AppLayout } from '@/layouts/AppLayout';
 import { NotFoundPage } from '@/pages/NotFoundPage';
-import { CharactersPage } from '@/pages/CharactersPage';
-import { CharacterPage } from '@/pages/CharacterPage';
+import { CharactersPage } from '@/pages/CharacterList/Index';
+import { CharacterPage } from '@/pages/Character/Index';
 import { type RouteObject } from 'react-router';
 
 export const routes: RouteObject[] = [

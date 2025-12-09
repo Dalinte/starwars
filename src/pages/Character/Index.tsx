@@ -4,8 +4,8 @@ import { CharacterEditForm } from '@/components/character/CharacterEditForm';
 import { CharacterCard } from '@/components/character/CharacterCard';
 import { CharacterCardSkeleton } from '@/components/character/CharacterCardSkeleton';
 import { useSideDrawer, useLocalCharacter, useMergedCharacter } from '@/hooks';
-import { CharacterPageTop } from '@/components/character/CharacterPageTop';
-import { NoResultsFound } from '@/components/ui/NoResultsFound';
+import { CharacterPageTop } from './entities/CharacterPageTop';
+import { NoResultsFound } from '@/components/NoResultsFound.tsx';
 import { toast } from 'sonner';
 
 export const CharacterPage = () => {
