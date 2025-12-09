@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { getCharacterWithId } from '@/utils';
 
 export const useCharacter = (characterId: number) => {
-  const { data } = useQuery({
+  const { data, isFetching } = useQuery({
     ...getCharacterByIdOptions({
       path: {
         id: String(characterId),
@@ -20,5 +20,6 @@ export const useCharacter = (characterId: number) => {
 
   return {
     character: characterWithId,
+    isLoading: isFetching
   };
 };
