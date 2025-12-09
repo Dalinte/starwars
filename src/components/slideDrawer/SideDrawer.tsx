@@ -4,7 +4,7 @@ import { Drawer, type DrawerProps, styled } from '@mui/material';
 export const StyledDrawer = styled(Drawer)(({ theme }) => ({
   '& .MuiDrawer-paper': {
     width: '30%',
-    minWidth: '300px',
+    minWidth: '350px',
     maxWidth: '900px',
     padding: theme.spacing(3),
     boxSizing: 'border-box',
