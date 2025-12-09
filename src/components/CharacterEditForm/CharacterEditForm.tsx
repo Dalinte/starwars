@@ -22,22 +22,7 @@ interface CharacterEditFormProps {
 export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEditFormProps) => {
   const formik = useFormik<Character>({
     initialValues: {
-      name: character.name || '',
-      height: character.height || '',
-      mass: character.mass || '',
-      hair_color: character.hair_color || '',
-      skin_color: character.skin_color || '',
-      eye_color: character.eye_color || '',
-      birth_year: character.birth_year || '',
-      gender: character.gender || '',
-      homeworld: character.homeworld || '',
-      films: character.films || [],
-      created: character.created || '',
-      edited: character.edited || '',
-      species: character.species || [],
-      starships: character.starships || [],
-      url: character.url || '',
-      vehicles: character.vehicles || [],
+      ...character
     },
     validationSchema: validationSchema,
     onSubmit: values => {
@@ -49,7 +34,7 @@ export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEdit
   });
 
   return (
-    <Box sx={{ mt: 2, maxWidth: 800, mx: 'auto', p: 3 }}>
+    <Box sx={{ mt: 2, maxWidth: 800, mx: 'auto' }}>
       <Typography variant="h5" gutterBottom component="h2" sx={{ mb: 3 }}>
         Edit Character
       </Typography>

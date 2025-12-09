@@ -1,7 +1,7 @@
-import React from 'react';
+import type { FC, ReactNode } from 'react';
 import { Drawer, type DrawerProps, styled } from '@mui/material';
 
-const StyledDrawer = styled(Drawer)(({ theme }) => ({
+export const StyledDrawer = styled(Drawer)(({ theme }) => ({
   '& .MuiDrawer-paper': {
     width: '30%',
     minWidth: '300px',
@@ -14,11 +14,11 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
 interface SideDrawerProps extends Omit<DrawerProps, 'onClose'> {
   isOpen: boolean;
   onClose: () => void;
-  children?: React.ReactNode;
+  children?: ReactNode;
   anchor?: 'left' | 'right' | 'top' | 'bottom';
 }
 
-export const SideDrawer: React.FC<SideDrawerProps> = ({
+export const SideDrawer: FC<SideDrawerProps> = ({
   isOpen,
   onClose,
   children,
@@ -26,15 +26,8 @@ export const SideDrawer: React.FC<SideDrawerProps> = ({
   ...props
 }) => {
   return (
-    <StyledDrawer
-      anchor={anchor}
-      open={isOpen}
-      onClose={onClose}
-      {...props}
-    >
+    <StyledDrawer anchor={anchor} open={isOpen} onClose={onClose} {...props}>
       {children}
     </StyledDrawer>
   );
 };
-
-export default SideDrawer;

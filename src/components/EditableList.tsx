@@ -54,7 +54,6 @@ export const EditableList = ({
   const handleRemoveItem = (index: number) => {
     const newItems = items.filter((_, i) => i !== index);
     onChange(newItems);
-    // Shift errors up when removing an item
     setErrors(prev => {
       const newErrors: Record<number, string> = {};
       Object.entries(prev).forEach(([i, error]) => {
@@ -75,7 +74,7 @@ export const EditableList = ({
       const error = validation(value);
       setErrors(prev => ({
         ...prev,
-        [index]: error,
+        [index]: String(error),
       }));
     }
   };
