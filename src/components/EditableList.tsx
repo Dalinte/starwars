@@ -7,9 +7,7 @@ import {
   ListItemSecondaryAction,
   IconButton,
   InputAdornment,
-  Divider,
   Paper,
-  Typography,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -26,7 +24,6 @@ export interface EditableListProps {
 export const EditableList = ({
   items,
   onChange,
-  label,
   itemLabel = 'Item',
   validation,
 }: EditableListProps) => {
@@ -81,9 +78,6 @@ export const EditableList = ({
 
   return (
     <Box sx={{ mt: 2, mb: 3 }}>
-      <Typography variant="h6" gutterBottom>
-        {label}
-      </Typography>
       <Paper variant="outlined" sx={{ p: 2, mb: 2 }}>
         <List dense>
           {items.map((item, index) => (
@@ -109,7 +103,6 @@ export const EditableList = ({
                   </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
-              {index < items.length - 1 && <Divider component="li" />}
             </div>
           ))}
         </List>

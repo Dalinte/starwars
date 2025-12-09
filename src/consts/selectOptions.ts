@@ -12,6 +12,7 @@ export const defaultColorOptions: SelectOptions = [
   { value: 'pink', label: 'Pink' },
   { value: 'gold', label: 'Gold' },
   { value: 'white', label: 'White' },
+  { value: 'blond', label: 'Blond' },
   { value: 'n/a', label: 'N/A' },
 ];
 
@@ -21,7 +22,7 @@ export const skinColorOptions = [
   { value: 'light', label: 'Light' },
   { value: 'dark', label: 'Dark' },
   { value: 'gold', label: 'Gold' },
-  { value: 'Fair', label: 'Fair' },
+  { value: 'fair', label: 'Fair' },
   { value: 'n/a', label: 'N/A' },
 ];
 
