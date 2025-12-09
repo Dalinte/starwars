@@ -12,6 +12,6 @@ export const useMergedCharacterList = () => {
 
   return {
     ...hookData,
-    mergedCharacterList,
+    characterList: mergedCharacterList,
   };
 };
