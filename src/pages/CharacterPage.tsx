@@ -6,6 +6,7 @@ import { CharacterCardSkeleton } from '@/components/character/CharacterCardSkele
 import { useSideDrawer, useLocalCharacter, useMergedCharacter } from '@/hooks';
 import { CharacterPageTop } from '@/components/character/CharacterPageTop';
 import { NoResultsFound } from '@/components/ui/NoResultsFound';
+import { toast } from 'sonner';
 
 export const CharacterPage = () => {
   const { id: characterId } = useParams<{ id: string }>();
@@ -20,6 +21,7 @@ export const CharacterPage = () => {
           character={character}
           onSave={data => {
             saveCharacter(data);
+            toast.success('Character has been edited');
             closeDrawer();
           }}
           onCancel={closeDrawer}
