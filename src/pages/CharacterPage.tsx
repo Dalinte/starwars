@@ -4,6 +4,7 @@ import { CharacterEditForm } from '@/components/character/CharacterEditForm';
 import { CharacterCard } from '@/components/character/CharacterCard';
 import { useSideDrawer, useLocalCharacter, useMergedCharacter } from '@/hooks';
 import { CharacterPageTop } from '@/components/character/CharacterPageTop';
+import { NoResultsFound } from '@/components/ui/NoResultsFound';
 
 export const CharacterPage = () => {
   const { id: characterId } = useParams<{ id: string }>();
@@ -28,12 +29,18 @@ export const CharacterPage = () => {
 
   return (
     <Box>
-      <CharacterPageTop disabledEditButton={!character} handleEditClick={handleEditClick}/>
+      <CharacterPageTop disabledEditButton={!character} handleEditClick={handleEditClick} />
       <Container maxWidth="sm">
-        {character && (
+        {character ? (
           <Box>
-            <CharacterCard character={character} onClick={handleEditClick} showFullDescription={true} />
+            <CharacterCard
+              character={character}
+              onClick={handleEditClick}
+              showFullDescription={true}
+            />
           </Box>
+        ) : (
+          <NoResultsFound />
         )}
       </Container>
     </Box>
