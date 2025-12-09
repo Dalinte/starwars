@@ -1,5 +1,5 @@
 import { type FormikProps, type FormikValues, useFormikContext } from 'formik';
-import { EditableList, type EditableListProps } from '@/components/ui/EditableList.tsx';
+import { EditableList, type EditableListProps } from '@/components/ui/EditableList';
 
 interface EditableListWithFormikProps<T extends FormikValues> extends Omit<EditableListProps, 'items' | 'onChange'> {
   name: keyof T & string;

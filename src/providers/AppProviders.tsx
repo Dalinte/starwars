@@ -1,7 +1,7 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from '@/configs/queryClient.ts';
+import { queryClient } from '@/configs';
 import type { ReactNode } from 'react';
-import { SideDrawerManager } from '@/components/SlideDrawer/SideDrawerManager.tsx';
+import { SideDrawerManager } from '@/components/SlideDrawer/SideDrawerManager';
 
 export const AppProviders = ({ children }: { children: ReactNode }) => {
   return (

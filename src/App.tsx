@@ -1,6 +1,6 @@
 import './App.css';
-import { AppProviders } from '@/providers/AppProviders.tsx';
-import { AppRouter } from '@/router/AppRouter.tsx';
+import { AppProviders } from '@/providers/AppProviders';
+import { AppRouter } from '@/router/AppRouter';
 
 export default function App() {
   return (
