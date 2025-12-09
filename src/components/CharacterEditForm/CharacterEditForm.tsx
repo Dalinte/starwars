@@ -82,6 +82,14 @@ export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEdit
                 />
               </Grid>
               <Grid size={{ xs: 12, md: 6 }}>
+                <TextFieldWithFormik<Character>
+                  name="height"
+                  label="Height (cm)"
+                  formik={formik}
+                  InputProps={{
+                    startAdornment: <HeightIcon sx={{ color: 'action.active', mr: 1 }} />
+                  }}
+                />
                 <SelectWithFormik<Character>
                   name="gender"
                   label="Gender"
@@ -91,18 +99,10 @@ export const CharacterEditForm = ({ character, onSave, onCancel }: CharacterEdit
                     startAdornment: <GenderIcon sx={{ color: 'action.active', mr: 1 }} />
                   }}
                 />
-                <TextFieldWithFormik<Character>
-                  name="height"
-                  label="Height (cm)"
-                  formik={formik}
-                  InputProps={{
-                    startAdornment: <HeightIcon sx={{ color: 'action.active', mr: 1 }} />
-                  }}
-                />
               </Grid>
               <Grid size={{ xs: 12, md: 6 }}>
-                <TextFieldWithFormik<Character> 
-                  name="mass" 
+                <TextFieldWithFormik<Character>
+                  name="mass"
                   label="Mass (kg)" 
                   formik={formik}
                   fullWidth

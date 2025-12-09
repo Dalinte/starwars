@@ -53,7 +53,7 @@ export function SelectWithFormik<T extends FormikValues>({
           </MenuItem>
         ))}
       </Select>
-      {error && <FormHelperText>{error}</FormHelperText>}
+      {<FormHelperText>{error}</FormHelperText>}
     </FormControl>
   );
 }

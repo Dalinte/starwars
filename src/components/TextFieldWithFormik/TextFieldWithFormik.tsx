@@ -38,8 +38,26 @@ export function TextFieldWithFormik<T extends FormikValues>({
       onChange={handleChange}
       onBlur={handleBlur}
       error={!!error}
-      helperText={error}
+      helperText={error || ' '}
       margin="normal"
+      slotProps={{
+        formHelperText: {
+          sx: {
+            minHeight: '12px',
+            display: 'flex',
+            alignItems: 'center',
+            m: 0,
+            mt: 0.5,
+            lineHeight: 1.2,
+          }
+        }
+      }}
+      sx={{
+        '& .MuiFormHelperText-root': {
+          opacity: error ? 1 : 0,
+          transition: 'opacity 0.2s ease-in-out',
+        }
+      }}
       {...props}
     />
   );
