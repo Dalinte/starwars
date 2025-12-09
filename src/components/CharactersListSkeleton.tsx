@@ -5,7 +5,7 @@ export const CharactersListSkeleton = () => {
   return (
     <Grid container spacing={1} columns={12}>
       {[...Array(10)].map((_, index) => (
-        <Grid key={index} size={{ xs: 12, md: 4 }} height={455}>
+        <Grid key={index} size={{ xs: 12, md: 4 }} height={410}>
           <Skeleton
             variant="rectangular"
             height={210}
@@ -16,7 +16,7 @@ export const CharactersListSkeleton = () => {
             }}
           />
           <Skeleton variant="text" width="30%" height={32} animation="wave" />
-          <Skeleton variant="text" width="100%" height={150} animation="wave" />
+          <Skeleton variant="text" width="100%" height={100} animation="wave" />
           <Skeleton variant="text" width="100%" height={32} animation="wave" />
           <Skeleton variant="text" width="100%" height={32} animation="wave" />
         </Grid>

@@ -1,2 +1,2 @@
 export * from './getCharacterWithId.ts'
-export * from './characterDescription.ts'
+export * from './generateCharacterDescription.ts'

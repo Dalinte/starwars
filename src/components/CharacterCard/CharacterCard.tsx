@@ -1,15 +1,20 @@
 import { CardMedia, Typography } from '@mui/material';
 import { StyledCard, StyledCardContent, StyledTypography } from './style.ts';
 import Box from '@mui/material/Box';
-import { generateCharacterDescription } from '@/utils/characterDescription.ts';
+import { generateCharacterDescription } from '@/utils/generateCharacterDescription.ts';
 import type { CharacterWithId } from '@/types';
 
 interface CharacterCardProps {
   character: CharacterWithId;
+  showFullDescription?: boolean;
   onClick: () => void;
 }
 
-export const CharacterCard = ({ character, onClick }: CharacterCardProps) => {
+export const CharacterCard = ({
+  character,
+  onClick,
+  showFullDescription = false,
+}: CharacterCardProps) => {
   return (
     <StyledCard variant="outlined" sx={{ height: '100%', textAlign: 'start' }} onClick={onClick}>
       <CardMedia
@@ -28,9 +33,14 @@ export const CharacterCard = ({ character, onClick }: CharacterCardProps) => {
         <Typography gutterBottom variant="h6" component="div">
           {character.name}
         </Typography>
-        <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-          {generateCharacterDescription(character)}
-        </StyledTypography>
+        <StyledTypography
+          variant="body2"
+          color="text.secondary"
+          gutterBottom
+          dangerouslySetInnerHTML={{
+            __html: generateCharacterDescription(character)[showFullDescription ? 'full' : 'short'],
+          }}
+        ></StyledTypography>
       </StyledCardContent>
       <Box
         sx={{

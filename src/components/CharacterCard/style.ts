@@ -33,7 +33,7 @@ export const StyledCardContent = styled(CardContent)({
 export const StyledTypography = styled(Typography)({
   display: '-webkit-box',
   WebkitBoxOrient: 'vertical',
-  WebkitLineClamp: 4,
+  WebkitLineClamp: 7,
   overflow: 'hidden',
   textOverflow: 'ellipsis',
 });

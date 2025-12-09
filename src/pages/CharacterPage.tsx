@@ -34,7 +34,7 @@ export const CharacterPage = () => {
       <Container maxWidth="sm">
         {character && (
           <Box>
-            <CharacterCard character={character} onClick={handleEditClick} />
+            <CharacterCard character={character} onClick={handleEditClick} showFullDescription={true} />
           </Box>
         )}
       </Container>
