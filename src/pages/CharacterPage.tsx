@@ -1,11 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { Box, Container } from '@mui/material';
-import { CharacterEditForm } from '@/components/CharacterEditForm';
-import { CharacterCard } from '@/components/CharacterCard';
-import { useSideDrawer } from '@/hooks';
-import { useLocalCharacter } from '@/hooks/useLocalCharacter.ts';
-import { useMergedCharacter } from '@/hooks/useMergedCharacter.ts';
-import { CharacterPageTop } from '@/components/CharacterPageTop.tsx';
+import { CharacterEditForm } from '@/components/character/CharacterEditForm';
+import { CharacterCard } from '@/components/character/CharacterCard';
+import { useSideDrawer, useLocalCharacter, useMergedCharacter } from '@/hooks';
+import { CharacterPageTop } from '@/components/character/CharacterPageTop';
 
 export const CharacterPage = () => {
   const { id: characterId } = useParams<{ id: string }>();

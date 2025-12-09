@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material';
-import { CharactersHeader } from '@/components/CharactersHeader.tsx';
-import { CharactersContent } from '@/components/CharactersContent.tsx';
-import { CharactersBottom } from '@/components/CharactersBottom.tsx';
-import { useCharactersPaginationStore } from '@/store/useCharactersPaginationStore';
+import { CharactersPageHeader } from '@/components/characters/CharactersPageHeader.tsx';
+import { CharactersPageContent } from '@/components/characters/CharactersPageContent.tsx';
+import { CharactersPageBottom } from '@/components/characters/CharactersPageBottom.tsx';
+import { useCharactersPaginationStore } from '@/store';
 import { useEffect } from 'react';
 import { scrollToTop } from '@/utils/scrollToTop.ts';
 
@@ -16,12 +16,12 @@ export const CharactersPage = () => {
   return (
     <Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-        <Typography variant="h1" gutterBottom>
+        <Typography variant='h2' gutterBottom>
           Characters of Starwars
         </Typography>
-        <CharactersHeader />
-        <CharactersContent />
-        <CharactersBottom />
+        <CharactersPageHeader />
+        <CharactersPageContent />
+        <CharactersPageBottom />
       </Box>
     </Box>
   );

@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
-import { useCharacter } from '@/hooks/useCharacter.ts';
-import { useLocalCharacter } from '@/hooks/useLocalCharacter.ts';
+import { useCharacter, useLocalCharacter } from '@/hooks';
 
 export const useMergedCharacter = (characterId: number) => {
   const { character } = useCharacter(Number(characterId));

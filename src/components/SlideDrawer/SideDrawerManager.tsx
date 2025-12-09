@@ -1,5 +1,5 @@
-import { useSideDrawerStore } from '@/stores/useSideDrawerStore';
-import { SideDrawer } from '../SideDrawer';
+import { useSideDrawerStore } from '@/stores';
+import { SideDrawer } from './SideDrawer.tsx';
 
 export const SideDrawerManager = () => {
   const { isOpen, content, setDrawerValues } = useSideDrawerStore();

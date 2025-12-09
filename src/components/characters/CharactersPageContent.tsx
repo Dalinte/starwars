@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
-import { CharacterCardList } from '@/components/CharacterCardList.tsx';
-import { CharactersListSkeleton } from '@/components/CharactersListSkeleton.tsx';
-import { useMergedCharacterList } from '@/hooks/useMergedCharacterList.ts';
-import { NoResultsFound } from '@/components/NoResultsFound';
-import { useSearchStore } from '@/store/searchStore.ts';
+import { CharacterCardList } from '@/components/characters/CharacterCardList.tsx';
+import { CharactersListSkeleton } from '@/components/characters/CharactersListSkeleton.tsx';
+import { useMergedCharacterList } from '@/hooks';
+import { NoResultsFound } from '@/components/ui/NoResultsFound.tsx';
+import { useSearchStore } from '@/store';
 import { useMemo } from 'react';
 
-export const CharactersContent = () => {
+export const CharactersPageContent = () => {
   const { characterList, isLoading } = useMergedCharacterList();
   const { searchQuery } = useSearchStore();
 

@@ -1,8 +1,8 @@
 import { Box, Pagination } from '@mui/material';
-import { useMergedCharacterList } from '@/hooks/useMergedCharacterList.ts';
+import { useMergedCharacterList } from '@/hooks';
 import { useMemo } from 'react';
 
-export const CharactersBottom = () => {
+export const CharactersPageBottom = () => {
   const { maxPage, handlePageChange } =
     useMergedCharacterList();
 

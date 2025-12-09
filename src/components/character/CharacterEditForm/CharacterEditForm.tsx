@@ -21,10 +21,10 @@ import {
   hairColorOptions,
   skinColorOptions,
 } from '@/consts/selectOptions';
-import { TextFieldWithFormik } from '../TextFieldWithFormik/TextFieldWithFormik';
+import { TextFieldWithFormik } from '@/components/form/TextFieldWithFormik';
 import type { Character } from '@/api/swapi';
-import { SelectWithFormik } from '@/components/SelectWithFormik/SelectWithFormik';
-import { EditableListWithFormik } from '@/components/EditableListWithFormik/EditableListWithFormik';
+import { SelectWithFormik } from '@/components/form/SelectWithFormik';
+import { EditableListWithFormik } from '@/components/form/EditableListWithFormik';
 import { validationSchema } from './validationSchema';
 
 interface CharacterEditFormProps {

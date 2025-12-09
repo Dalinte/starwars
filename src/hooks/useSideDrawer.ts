@@ -1,4 +1,4 @@
-import { useSideDrawerStore } from '@/stores/useSideDrawerStore';
+import { useSideDrawerStore } from '@/stores';
 import type { ReactNode } from 'react';
 
 export const useSideDrawer = () => {

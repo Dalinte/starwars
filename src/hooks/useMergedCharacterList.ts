@@ -1,6 +1,5 @@
-import { useCharacterList } from '@/hooks/useCharacterList.ts';
+import { useCharacterList, useLocalCharacter } from '@/hooks';
 import { useMemo } from 'react';
-import { useLocalCharacter } from '@/hooks/useLocalCharacter.ts';
 
 export const useMergedCharacterList = () => {
   const hookData = useCharacterList();

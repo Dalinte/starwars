@@ -1,8 +1,8 @@
 import { Box, FormControl } from '@mui/material';
-import { Search } from '@/components/Search.tsx';
-import { useSearchStore } from '@/store/searchStore.ts';
+import { Search } from '@/components/ui/Search.tsx';
+import { useSearchStore } from '@/store';
 
-export const CharactersHeader = () => {
+export const CharactersPageHeader = () => {
   const { searchQuery, setSearchQuery } = useSearchStore();
 
   return (
@@ -10,7 +10,7 @@ export const CharactersHeader = () => {
       sx={{
         display: 'flex',
         flexDirection: { xs: 'column-reverse', md: 'row' },
-        width: '100%',
+        width: { lg: 1152, xs: '100%' },
         justifyContent: 'flex-end',
         alignItems: { xs: 'start', md: 'center' },
         overflow: 'auto',
